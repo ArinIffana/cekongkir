@@ -1,6 +1,10 @@
 .landing__body {
   background-color: #e5f3ff;
 }
+.landing__body a {
+  color: black;
+  text-decoration: none;
+}
 .landing__header {
   background-color: whitesmoke;
   height: 80px;
@@ -12,6 +16,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 }
 .landing__header__left {
   font-weight: 500;
@@ -22,12 +27,34 @@
 }
 .landing__header__right p {
   margin-right: 50px;
+  margin-bottom: 0 !important;
+  align-items: center;
+  display: flex;
 }
 .landing__header__right button {
   background-color: #e5f3ff;
   border-radius: 10px;
   height: 30px;
   width: 80px;
+}
+/* .landing__header__input {
+  background-color: #e5f3ff;
+} */
+.landing__header__loginbutton {
+  background-color: #e5f3ff;
+  border-radius: 10px;
+  height: 30px;
+  width: 80px;
+}
+.landing__header__profile {
+  overflow: hidden;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  background-color: #b3e0d0;
+}
+.landing__header__profileimg {
+  width: 50px;
 }
 .landing__main {
   padding-top: 150px;
