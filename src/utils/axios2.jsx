@@ -26,7 +26,7 @@ axiosApiIntances.interceptors.request.use(
     if (error.response.status === 403) {
       if (error.response.data.msg !== "jwt expired") {
         localStorage.clear();
-        window.location.href = "/signin";
+        window.location.href = "/";
       } else if (error.response.data.msg === "jwt expired") {
         const refreshToken = localStorage.getItem("refreshToken");
         axiosApiIntances
@@ -38,7 +38,7 @@ axiosApiIntances.interceptors.request.use(
           })
           .catch((err) => {
             localStorage.clear();
-            window.location.href = "/signin";
+            window.location.href = "/";
           });
       }
     }
