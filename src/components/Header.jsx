@@ -88,7 +88,7 @@ export default function Header() {
             </div>
           </>
         ) : (
-          <button onClick={handleShow}>Sign In</button>
+          <button onClick={handleShow}>Log In</button>
         )}
       </div>
       <Modal show={show} onHide={handleClose}>

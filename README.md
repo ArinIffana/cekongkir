@@ -3,22 +3,22 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="./public/img/Home/vector tickitz 2.png" alt="Logo" width="160" height="60">
+    <img src="./public/image/Screenshot 2022-08-25 093348.png" alt="Logo" width="160">
   </a>
 
-  <h3 align="center">Tickitz Web</h3>
+  <h3 align="center">CekOngkir Web</h3>
 
   <p align="center">
-    An awesome Website to booking cinema movie!
+    An awesome Website to check delivery cost
     <br />
-    <a href="https://github.com/ArinIffana/Tickitz_FrontEnd"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ArinIffana/cekongkir"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://tickitz-official.netlify.app/">View Demo</a>
+    <a href="https://cekongkir-arin.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/ArinIffana/Tickitz_FrontEnd/issues">Report Bug</a>
+    <a href="https://github.com/ArinIffana/cekongkir/issues">Report Bug</a>
     ·
-    <a href="https://github.com/ArinIffana/Tickitz_FrontEnd/issues">Request Feature</a>
+    <a href="https://github.com/ArinIffana/cekongkir/issues">Request Feature</a>
   </p>
 </div>
 
@@ -50,11 +50,11 @@
 
 ## About The Project
 
-<img src="./public/img/sc.png" alt="Logo" width="500" >
-<img src="./public/img/sc2.png" alt="Logo" width="500" >
+<img src="./public/image/Screenshot 2022-08-25 093416.png" alt="Logo" width="500" >
+<img src="./public/image/Screenshot 2022-08-25 093455.png" alt="Logo" width="500" >
 
-Website to booking a cinema movie as a user. if you join as Admin you can add movie to this website so user can book it.
-here some account to login as user anaffiadiysor@gmail.com (123) and doremi@gmail.com (1233) as admin.
+Website to check the delivery cost to deliver a package with the most popular delivery service in Indonesia such as JNE, TIKI, and POS.
+here some dummy account to login anaffiadiysor@gmail.com (123) and doremi@gmail.com (1233).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -72,7 +72,7 @@ This website are build with some of this Frameworks :
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+first you must have text editor such as vs code, atom, sublime text, choose one of them. then, you make foler and open it in text editor. go to terminal => new terminal and run the instruction below.
 
 ### Prerequisites
 
@@ -87,40 +87,28 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone hhttps://github.com/ArinIffana/cekongkir
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `.env`
+3. Enter your API in `.env`
    ```js
-   API_KEY = "ENTER YOUR API";
+   REACT_APP_CLOUDINARY =https://res.cloudinary.com/dabzupph0/image/upload/v1650965669/
+   REACT_APP_BACK_END1 =https://pesanfilm.herokuapp.com/
+   REACT_APP_BACK_END2 =https://api.rajaongkir.com/starter/
+   ```
+4. Run the this in to your terminal
+   ```sh
+   npm start
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- LICENSE -->
 
 ## License
 
@@ -134,7 +122,9 @@ Don't forget to give the project a star! Thanks again!
 
 Arin Iffana - [anaffiadiysor@gmail.com](https://mail.google.com/)
 
-Project Link: [https://github.com/ArinIffana/Tickitz_FrontEnd](https://github.com/ArinIffana/Tickitz_FrontEnd)
+Project Link: [https://github.com/ArinIffana/Tickitz_FrontEnd](https://github.com/ArinIffana/cekongkir)
+
+Demo Project:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
