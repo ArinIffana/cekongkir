@@ -95,16 +95,17 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-3. Enter your API in `.env`
+3. Create file named .env in this folder and type this into the file
    ```js
    REACT_APP_CLOUDINARY =https://res.cloudinary.com/dabzupph0/image/upload/v1650965669/
    REACT_APP_BACK_END1 =https://pesanfilm.herokuapp.com/
-   REACT_APP_BACK_END2 =https://api.rajaongkir.com/starter/
+   REACT_APP_BACK_END2 =https://cekongkir-arin.herokuapp.com/api/
    ```
 4. Run the this in to your terminal
    ```sh
    npm start
    ```
+5. Make sure tou have internet access.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

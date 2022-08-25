@@ -6,9 +6,6 @@ const axiosApiIntances = axios.create({
 axiosApiIntances.interceptors.request.use(
   function (config) {
     config.headers = {
-      key: `${process.env.REACT_APP_RAJAONGKIR}`,
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/x-www-form-urlencoded",
       // "Access-Control-Expose-Headers":
       //   "Origin, Content-Type, X-Auth-Token, Content-Length, X-JSON",
       // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
@@ -16,14 +13,10 @@ axiosApiIntances.interceptors.request.use(
     console.log(config);
     return config;
   },
-  function (request) {
-    request.withCredentials = true;
-    return request;
-  },
   function (error) {
-    if (error.response.status === 403) {
+    if (error.response === 403) {
     }
-    if (error.response.status === 403) {
+    if (error.response === 403) {
       if (error.response.data.msg !== "jwt expired") {
         localStorage.clear();
         window.location.href = "/";

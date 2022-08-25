@@ -7,38 +7,35 @@ import axios from "axios";
 export default function Landing() {
   document.title = "CekOngkir";
   const [cityData, setCityData] = useState([]);
+  const [form, setForm] = useState({});
 
   useEffect(() => {
-    getDataCity();
+    if (cityData.length === 0) {
+      getDataCity();
+    }
   }, []);
-  console.log(`${process.env.REACT_APP_RAJAONGKIR}`);
-  const result2 = () => {};
 
   const getDataCity = async () => {
     try {
-      // const proxy = "https://cors-anywhere.herokuapp.com/";
-      // const url2 = "https://api.rajaongkir.com/starter/city";
-      // const req = await fetch(`${proxy}${url2}`);
-      // const res = await req.json();
-      // console.log(res);
-      // const result = await axios.get(
-      //   "https://api.rajaongkir.com/starter/city",
-      //   {
-      //     headers: {
-      //       key: `${process.env.REACT_APP_RAJAONGKIR}`,
-      //     },
-      //   }
-      // );
-      // const result = await axios2.get("city");
-      // console.log(result);
-      // setCityData(result.rajaongkir.results);
+      const result = await axios2.get("kota");
+      setCityData(result.data.rajaongkir.results);
     } catch (error) {
       alert(`${error}`);
       console.log(error);
-      console.log(error.message);
+      console.log(error.response);
     }
   };
 
+  const handleChangeOrigin = (e) => {
+    console.log("first");
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+  const handleChangeDestination = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
+  const handleSubmit = () => {};
   return (
     <div className={styles.landing__body}>
       <Header />
@@ -56,7 +53,7 @@ export default function Landing() {
       <section className={styles.landing__section}>
         <div className={styles.landing__section__left}>
           <h3>Cek Ongkir</h3>
-          <form action="">
+          <form action="submit">
             <div className={`mb-3`}>
               <label for="exampleInputFirstName1" className={`form-label`}>
                 Kota Asal :
@@ -67,13 +64,23 @@ export default function Landing() {
                 className="form-control"
                 type="text"
                 id="place"
-                list="places"
+                list="places1"
                 placeholder="Kota Asal Pengiriman"
+                onChange={handleChangeOrigin}
               />
-              <datalist id="places">
-                <option value="WVC"></option>
-                <option value="HAM"></option>
-                <option value="WON"></option>
+              <datalist id="places1">
+                {cityData ? (
+                  cityData.map((item) => (
+                    <option
+                      value={item.city_name}
+                      label={item.province}
+                      name={item.city_id}
+                      key={item.city_id}
+                    ></option>
+                  ))
+                ) : (
+                  <></>
+                )}
               </datalist>
             </div>
             <div className={`mb-3`}>
@@ -87,11 +94,21 @@ export default function Landing() {
                 id="place"
                 list="places"
                 placeholder="Kota Asal Pengiriman"
+                onChange={handleChangeDestination}
               />
               <datalist id="places">
-                <option value="WVC"></option>
-                <option value="HAM"></option>
-                <option value="WON"></option>
+                {cityData ? (
+                  cityData.map((item) => (
+                    <option
+                      value={item.city_name}
+                      label={item.province}
+                      name={item.city_id}
+                      key={item.city_id}
+                    ></option>
+                  ))
+                ) : (
+                  <></>
+                )}
               </datalist>
             </div>
             <div className="mb-3">
@@ -124,7 +141,9 @@ export default function Landing() {
                 <img src="image/pos.jpg" alt="" />
               </label>
             </div>
-            <button>Periksa</button>
+            <button type="submit" onSubmit={handleSubmit}>
+              Periksa
+            </button>
           </form>
         </div>
         <div className={styles.landing__section__right}>
