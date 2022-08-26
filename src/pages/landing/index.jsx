@@ -99,6 +99,7 @@ export default function Landing() {
                 name="origin"
                 placeholder="Kota Asal Pengiriman"
                 onChange={handleChangeForm}
+                requred
               />
               <datalist id="places">
                 {cityData ? (
@@ -128,6 +129,7 @@ export default function Landing() {
                 name="destination"
                 placeholder="Kota Asal Pengiriman"
                 onChange={handleChangeForm}
+                required
               />
               <datalist id="places"></datalist>
             </div>
@@ -141,6 +143,7 @@ export default function Landing() {
                 className="form-control"
                 placeholder="Berat Paket"
                 onChange={handleChangeForm}
+                required
               />
               <span className="input-group-text" id="basic-addon2">
                 gram
