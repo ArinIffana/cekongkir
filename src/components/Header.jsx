@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../pages/landing/index.module.css";
 import Modal from "react-bootstrap/Modal";
 import axios1 from "../utils/axios1";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 export default function Header() {
   const [isError, setIsError] = useState(false);
@@ -64,17 +65,61 @@ export default function Header() {
     localStorage.clear();
     setData({});
   };
+
   return (
     <header className={styles.landing__header}>
       <div className={styles.landing__header__left}>
         <a href="#home">
-          <em>C</em>ekOngkir
+          <Link
+            activeClass="active"
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
+            <em>C</em>ekOngkir
+          </Link>
         </a>
       </div>
       <div className={styles.landing__header__right}>
-        <p>Home</p>
-        <p>Service</p>
-        <p>Contact</p>
+        <p className={styles.landing__header__link}>
+          <Link
+            activeClass="active"
+            to="home"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
+            Home
+          </Link>
+        </p>
+        <p className={styles.landing__header__link}>
+          <Link
+            activeClass="active"
+            to="service"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
+            Service
+          </Link>
+        </p>
+        <p className={styles.landing__header__link}>
+          {" "}
+          <Link
+            activeClass="active"
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            duration={500}
+          >
+            Contact
+          </Link>
+        </p>
         {id ? (
           <div className="dropdown show">
             <div
