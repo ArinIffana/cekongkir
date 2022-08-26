@@ -69,7 +69,7 @@ export default function Landing() {
           <button>
             <Link
               activeClass="active"
-              to="home"
+              to="service"
               spy={true}
               smooth={true}
               offset={-70}
