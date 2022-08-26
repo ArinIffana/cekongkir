@@ -105,7 +105,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm start
    ```
-5. Make sure tou have internet access.
+5. Make sure tou have internet access. or you can access the deploy site in <a href="https://cekongkir-arin.netlify.app/">https://cekongkir-arin.netlify.app/</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
