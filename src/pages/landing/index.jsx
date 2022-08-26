@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import Header from "../../components/Header";
 import axios2 from "../../utils/axios2";
-import axios from "axios";
 
 export default function Landing() {
   document.title = "CekOngkir";
   const [cityData, setCityData] = useState([]);
   const [form, setForm] = useState({});
+  const [costData, setCostData] = useState([]);
 
   useEffect(() => {
     if (cityData.length === 0) {
@@ -26,16 +26,34 @@ export default function Landing() {
     }
   };
 
-  const handleChangeOrigin = (e) => {
-    console.log("first");
-    e.preventDefault();
-    console.log(e.target.value);
+  const handleChangeForm = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    console.log(e.target.value, e.target.name);
   };
-  const handleChangeDestination = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const idOrigin = cityData.find((i) => i.city_name === form.origin);
+      const idDestination = cityData.find(
+        (i) => i.city_name === form.destination
+      );
+      console.log(idOrigin, idDestination);
+      const result = await axios2.get(
+        `ongkos/${idOrigin.city_id}/${idDestination.city_id}/${form.weight}/${form.courier}`
+      );
+      console.log(result.data.rajaongkir.results[0].costs);
+      setCostData(result.data.rajaongkir.results[0].costs);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const handleSubmit = () => {};
+
+  const numberFormat = (value) =>
+    new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(value);
   return (
     <div className={styles.landing__body}>
       <Header />
@@ -53,7 +71,7 @@ export default function Landing() {
       <section className={styles.landing__section}>
         <div className={styles.landing__section__left}>
           <h3>Cek Ongkir</h3>
-          <form action="submit">
+          <form onSubmit={handleSubmit}>
             <div className={`mb-3`}>
               <label for="exampleInputFirstName1" className={`form-label`}>
                 Kota Asal :
@@ -64,11 +82,12 @@ export default function Landing() {
                 className="form-control"
                 type="text"
                 id="place"
-                list="places1"
+                list="places"
+                name="origin"
                 placeholder="Kota Asal Pengiriman"
-                onChange={handleChangeOrigin}
+                onChange={handleChangeForm}
               />
-              <datalist id="places1">
+              <datalist id="places">
                 {cityData ? (
                   cityData.map((item) => (
                     <option
@@ -93,23 +112,11 @@ export default function Landing() {
                 type="text"
                 id="place"
                 list="places"
+                name="destination"
                 placeholder="Kota Asal Pengiriman"
-                onChange={handleChangeDestination}
+                onChange={handleChangeForm}
               />
-              <datalist id="places">
-                {cityData ? (
-                  cityData.map((item) => (
-                    <option
-                      value={item.city_name}
-                      label={item.province}
-                      name={item.city_id}
-                      key={item.city_id}
-                    ></option>
-                  ))
-                ) : (
-                  <></>
-                )}
-              </datalist>
+              <datalist id="places"></datalist>
             </div>
             <div className="mb-3">
               <label for="berat"> Berat :</label>
@@ -117,8 +124,10 @@ export default function Landing() {
             <div className="input-group mb-3">
               <input
                 type="tel"
+                name="weight"
                 className="form-control"
                 placeholder="Berat Paket"
+                onChange={handleChangeForm}
               />
               <span className="input-group-text" id="basic-addon2">
                 gram
@@ -128,29 +137,66 @@ export default function Landing() {
               <div className="mb-3">
                 <label for="">Jasa Pengiriman :</label>
               </div>
-              <input type="radio" id="jne" name="fav_language" value="HTML" />
+              <input
+                type="radio"
+                id="jne"
+                name="courier"
+                value="jne"
+                onChange={handleChangeForm}
+              />
               <label for="jne">
                 <img src="image/New_Logo_JNE.png" alt="" />
               </label>
-              <input type="radio" id="tiki" name="fav_language" value="HTML" />
+              <input
+                type="radio"
+                id="tiki"
+                name="courier"
+                value="tiki"
+                onChange={handleChangeForm}
+              />
               <label for="tiki">
                 <img src="image/LogoTiKi.png" alt="" />
               </label>
-              <input type="radio" id="pos" name="fav_language" value="HTML" />
+              <input
+                type="radio"
+                id="pos"
+                name="courier"
+                value="pos"
+                onChange={handleChangeForm}
+              />
               <label for="pos">
                 <img src="image/pos.jpg" alt="" />
               </label>
             </div>
-            <button type="submit" onSubmit={handleSubmit}>
-              Periksa
-            </button>
+            <button type="submit">Periksa</button>
           </form>
         </div>
         <div className={styles.landing__section__right}>
-          <p>Harga Ongkir jakarta surabaya :</p>
           <p>
-            <em>Rp.</em> 17.000
+            Harga Ongkir {form.origin || "..."} menuju{" "}
+            {form.destination || "..."} dengan berat {form.weight || "..."} gram
+            kurir {form.courier || "..."} :
           </p>
+          <div>
+            {costData ? (
+              costData.map((item) => (
+                <div
+                  key={item.service}
+                  className={styles.landing__section__cost}
+                >
+                  <h4>
+                    <em>{item.service}</em> {`(${item.description})`}
+                  </h4>
+                  <h5>estimasi pengiriman {item.cost[0].etd} hari</h5>
+                  <h4 className={styles.landing__section__cost__price}>
+                    {numberFormat(item.cost[0].value)}
+                  </h4>
+                </div>
+              ))
+            ) : (
+              <></>
+            )}
+          </div>
         </div>
         <img
           src="image/delivery.png"

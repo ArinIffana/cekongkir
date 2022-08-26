@@ -60,6 +60,10 @@ export default function Header() {
       console.log(error.response);
     }
   };
+  const handleLogout = () => {
+    localStorage.clear();
+    setData({});
+  };
   return (
     <header className={styles.landing__header}>
       <div className={styles.landing__header__left}>
@@ -72,8 +76,15 @@ export default function Header() {
         <p>Service</p>
         <p>Contact</p>
         {id ? (
-          <>
-            <div className={styles.landing__header__profile}>
+          <div className="dropdown show">
+            <div
+              className={`dropdown-toggle ${styles.landing__header__profile}`}
+              id="dropdownMenuButton"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
               <img
                 src={
                   // data
@@ -86,7 +97,15 @@ export default function Header() {
                 className={styles.landing__header__profileimg}
               />
             </div>
-          </>
+            <div
+              className="dropdown-menu dropdown-menu-right"
+              aria-labelledby="dropdownMenuButton"
+            >
+              <a className="dropdown-item" onClick={handleLogout}>
+                LogOut
+              </a>
+            </div>
+          </div>
         ) : (
           <button onClick={handleShow}>Log In</button>
         )}

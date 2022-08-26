@@ -120,6 +120,25 @@
   font-size: large;
   font-weight: 700;
 }
+.landing__section__cost h4 em {
+  font-style: normal;
+  font-size: 25px;
+  font-weight: 600;
+}
+.landing__section__cost h4 {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.landing__section__cost h5 {
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: -8px;
+}
+.landing__section__cost__price {
+  font-size: 20px;
+  font-weight: 500 !important;
+}
 .landing__footer {
   margin-top: 40px;
   display: flex;
